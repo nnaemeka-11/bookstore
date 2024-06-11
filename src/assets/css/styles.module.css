@@ -1,0 +1,73 @@
+.Header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    padding: 0 50px;
+    background-color: antiquewhite;
+}
+
+.HeaderLogo{
+  display: flex;
+  width: 150px;
+  justify-content: center;
+}
+.Search{
+  width: 300px;
+  height: 30px;
+  border: none;
+  border-radius: 4px;
+  padding-left: 10px;
+}
+.Register{
+  width: 70px;
+  height: 30px;
+  border: unset;
+  border-radius: 4px;
+  background-color: black;
+  color: white;
+  font-weight: 500;
+  margin-right: 4px;
+}
+.Login{
+  width: 50px;
+  height: 30px;
+  border: unset;
+  border-radius: 4px;
+  background-color: red;
+  color: white;
+  font-weight: 500;
+}
+.DescContainer{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.Title{
+  margin-bottom: 16px;
+}
+
+.GetMore{
+  margin-top: 4px;
+  background-color: black;
+  color: white;
+  border-radius: 8px;
+  width: 120px;
+  height: 40px;
+  font-size: 16px;
+  font-weight: 500;
+  border: unset;
+}
+.GetMore:hover{
+  background-color: rgb(54, 54, 54);
+}
+.GetMore:active{
+  width: 130px;
+  height: 42px;
+}
+.Footer{
+  background-color: black;
+  color: white;
+  padding: 16px;
+  text-align: center;
+}

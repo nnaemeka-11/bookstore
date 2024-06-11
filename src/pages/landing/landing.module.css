@@ -1,0 +1,13 @@
+.Container{
+    height: 510px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(202, 106, 106);
+}
+.Desc{
+    width: 20%;
+}
+.Carousel{
+    width: 60%;
+}
