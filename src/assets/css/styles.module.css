@@ -29,6 +29,12 @@
   font-weight: 500;
   margin-right: 4px;
 }
+.Register:hover{
+  background-color: rgb(54, 54, 54);
+}
+.Register:active, .Login:active, .GetMore:active{
+  font-weight: 600;
+}
 .Login{
   width: 50px;
   height: 30px;
@@ -37,6 +43,9 @@
   background-color: red;
   color: white;
   font-weight: 500;
+}
+.Login:hover{
+  background-color: rgb(252, 147, 147);
 }
 .DescContainer{
   display: flex;
@@ -60,10 +69,6 @@
 }
 .GetMore:hover{
   background-color: rgb(54, 54, 54);
-}
-.GetMore:active{
-  width: 130px;
-  height: 42px;
 }
 .Footer{
   background-color: black;
