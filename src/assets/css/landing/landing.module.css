@@ -3,7 +3,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: rgb(202, 106, 106);
+    background-image: linear-gradient(to bottom right, rgb(255, 194, 204), rgb(154, 154, 154));
 }
 .Desc{
     width: 20%;

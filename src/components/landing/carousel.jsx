@@ -1,16 +1,18 @@
-import React, { useRef, useState } from 'react';
-// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-// import Desc from './desc';
 
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 
-import '../../assets/css/style.css';
+import '../../assets/css/landing/style.css';
+import biography from '../../assets/images/biography.jpg'
+import fiction from '../../assets/images/fiction.jpg'
+import health from '../../assets/images/health.jpg'
+import politics from '../../assets/images/politics.jpg'
+import religion from '../../assets/images/religion.jpg'
+import mystery from '../../assets/images/mystery.jpg'
+import selfhelp from '../../assets/images/selfhelp.jpg'
 
-// import required modules
 import { EffectCoverflow, Pagination } from 'swiper/modules';
 
 export default function Carousel() {
@@ -36,31 +38,25 @@ export default function Carousel() {
         className="mySwiper"
       >
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+          <img src={biography} />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+          <img src={fiction} />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+          <img src={religion} />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+          <img src={health} />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
+          <img src={mystery} />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
+          <img src={politics} />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
+          <img src={selfhelp} />
         </SwiperSlide>
       </Swiper>
     </>

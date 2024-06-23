@@ -1,0 +1,17 @@
+.MainContainer{
+    background: rgb(242 242 242);
+    padding: 50px;
+}
+
+.FeaturedProducts{
+    font-weight: 600;
+    border-bottom: 2px solid grey;
+    padding-bottom: 10px;
+    margin: 10px 2%;
+}
+.CardsContainer{
+    display: flex; 
+    gap: 32px;
+    justify-content: center; 
+    flex-wrap: wrap; 
+}

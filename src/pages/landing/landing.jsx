@@ -1,6 +1,6 @@
 import React from 'react'
 import Carousel from '../../components/landing/carousel'
-import styles from './landing.module.css'
+import styles from '../../assets/css/landing/landing.module.css'
 import Desc from '../../components/landing/desc'
 import Header from '../../components/landing/header'
 import Footer from '../../components/landing/footer'
