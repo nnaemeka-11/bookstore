@@ -1,0 +1,52 @@
+.cardContainer{
+    display: flex;
+    flex-direction: column;
+}
+.cardContainer > input{
+    height: 35px;
+    border: unset;
+    font-size: 16px;
+    font-weight: 600;
+    border-bottom: 2px solid #b3b3b3;
+}
+.Invisible{
+    visibility: hidden;
+}
+.ErrorMessage{
+    color: red;
+    font-size: 12px;
+    margin-top: -17px;
+    display: flex;
+    align-self: flex-end;
+}
+.cardContainer > label {
+    color: #b3b3b3;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.cardContainer > input:focus{
+    color: #b3b3b3;
+}
+.cardContainer > input:active, .cardContainer > input:focus, .cardContainer > input:hover{
+    outline: unset;
+    background: whitesmoke;
+}
+
+.ButtonContainer{
+    height: 40px;
+    background: #b3b3b3;
+    border-radius: 8px;
+    border: unset;
+    font-style: 18px;
+    font-weight: 600;
+    margin-top: 32px;
+}
+.ButtonContainer:hover{
+    background-color: #7b7b7b;
+}
+
+.ButtonContainer:active{
+    background-color: #494949;
+    color: white;
+}

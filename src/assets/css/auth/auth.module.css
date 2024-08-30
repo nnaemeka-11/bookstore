@@ -1,0 +1,49 @@
+.SignUp, .Login{
+    width: 500px;
+    padding: 20px;
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+}
+
+.UserAuth{
+    background: #f2f2f2;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.AuthContainer{
+    padding: 10px;
+    border-radius: 16px;
+    box-shadow: 4px 4px 24px gray;
+}
+.AuthContainer > h3, .AuthContainer > p{
+    text-align: center;
+}
+.ForgotPasswordButton{
+    margin-bottom: -36px;
+    margin-top: 32px;
+    align-self: flex-start;
+}
+.SwitchButton, .ForgotPasswordButton{
+    background: unset;
+    border: unset;
+    cursor: pointer;
+    font-weight: 600;
+    font-style: 32px;
+}
+
+@media screen and (max-width: 540px) {
+    .SignUp, .Login{
+        width: 300px;
+        padding: 10px;
+    }
+}
+@media screen and (max-width: 340px) {
+    .SignUp, .Login{
+        width: 250px;
+        padding: 5px;
+    }
+}
