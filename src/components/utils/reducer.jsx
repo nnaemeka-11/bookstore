@@ -4,6 +4,8 @@ const initialState = {
     email: '',
     password: '',
     confirm_password: '',
+    response: '',
+    err_response:'',
     errors:{
         fullname: '',
         username: '',
@@ -21,7 +23,8 @@ const initialState = {
         username: '',
         email: '',
         password: '',
-    }
+    },
+    response: ''
  };
 
 function RegisterReducer(state, action) {
@@ -76,6 +79,26 @@ function RegisterReducer(state, action) {
         },
           };
     }
+    case 'SET_RESPONSE': {
+      return {
+          ...state,
+          [action.field]: action.response,
+           errors: {
+        ...state.errors,
+        [action.field]: '', 
+      },
+        };
+  }
+    case 'SET_ERR_RESPONSE': {
+      return {
+          ...state,
+          [action.field]: action.err_response,
+          errors: {
+        ...state.errors,
+        [action.field]: '', 
+      },
+        };
+  }
     case 'SET_ERROR':
     return {
       ...state,

@@ -27,14 +27,23 @@
     margin-top: 32px;
     align-self: flex-start;
 }
-.SwitchButton, .ForgotPasswordButton{
+
+.ForgotPasswordButton{
     background: unset;
     border: unset;
     cursor: pointer;
     font-weight: 600;
     font-style: 32px;
 }
-
+.Response{
+    margin-bottom: -50px;
+    margin-top: 16px;
+    text-align: center;
+    font-weight: 500;
+}
+.InvisibleResponse{
+    visibility: hidden;
+}
 @media screen and (max-width: 540px) {
     .SignUp, .Login{
         width: 300px;

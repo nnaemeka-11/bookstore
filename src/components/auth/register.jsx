@@ -1,8 +1,9 @@
 import React, { useReducer } from 'react'
 import { initialState, RegisterReducer } from '../utils/reducer'
-import { validateEmail, validatePassword } from '../utils/utils'
+import { sendEmail, validateEmail, validatePassword } from '../utils/utils'
 import {Input, SubmitButton} from '../utils/formElements'
 import styles from '../../assets/css/auth/auth.module.css'
+import axios from 'axios'
 
 function signUp() {
     const [state, dispatch] = useReducer(RegisterReducer, initialState);
@@ -11,7 +12,7 @@ function signUp() {
         let isValid = true
 
         for (const key in state) {
-            if (key !== 'errors' && state[key].trim() === '') {
+            if (key !== 'errors' && key !== 'response' && key !== 'err_response' && state[key].trim() === '') {
               dispatch({ type: 'SET_ERROR', field: key, error: `This field cannot be empty!` });
               isValid = false;
             }
@@ -33,7 +34,29 @@ function signUp() {
             dispatch({ type: 'SET_ERROR', field: 'confirm_password', error: 'Passwords do not match' });
             isValid = false;
         }
+        
         if(isValid) {
+            const { fullname, username, email, password} = state 
+            
+            const result = await axios({
+                method: 'post',
+                url: 'https://bookstore-server-sxgd.onrender.com/user/register',
+                data:{fullname,username,email,password}
+            })            
+            if(result.status===201){
+                const {email, verifyUrl} = result.data                               
+                const response = await sendEmail(email, verifyUrl)                 
+                if(response){
+                    dispatch({ type: 'SET_RESPONSE', field: 'response', response: 'Account created. Verify you Email' });
+                    console.log('Success');
+                } else{
+                    dispatch({ type: 'SET_ERR_RESPONSE', field: 'err_response', err_response: 'Something went wrong' });
+                }      
+            }else if (result.status===201){
+                dispatch({ type: 'SET_ERR_RESPONSE', field: 'err_response', response: result.data.message });
+            } else{
+                dispatch({ type: 'SET_ERR_RESPONSE', field: 'err_response', err_response: 'Something went wrong' });
+            }   
         };    
     }
   return (
@@ -88,6 +111,8 @@ function signUp() {
             dispatch={dispatch}
             error={state.errors.confirm_password}
         />
+            <span className={styles.Response}>{state.response} 
+                <i className={styles.InvisibleResponse}>Account created</i> </span>
         <SubmitButton
             label={"Register"}
             handleSubmit={handleSubmit}
