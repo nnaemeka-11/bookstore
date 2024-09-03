@@ -11,7 +11,7 @@ return re.test(password);
 
 const service_id = import.meta.env.VITE_SERVICE_ID
 const template_id = import.meta.env.VITE_TEMPLATE_ID;
-const public_key = import.meta.env.VITE_PUBLIC_KEY
+const public_key = import.meta.env.VITE_PK
 
 const sendEmail = async(email, token) => {
   
