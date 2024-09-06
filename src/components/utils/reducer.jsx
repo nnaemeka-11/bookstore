@@ -5,7 +5,6 @@ const initialState = {
     password: '',
     confirm_password: '',
     response: '',
-    err_response:'',
     errors:{
         fullname: '',
         username: '',
@@ -84,16 +83,6 @@ function RegisterReducer(state, action) {
           ...state,
           [action.field]: action.response,
            errors: {
-        ...state.errors,
-        [action.field]: '', 
-      },
-        };
-  }
-    case 'SET_ERR_RESPONSE': {
-      return {
-          ...state,
-          [action.field]: action.err_response,
-          errors: {
         ...state.errors,
         [action.field]: '', 
       },
