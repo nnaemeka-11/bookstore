@@ -99,12 +99,13 @@ function signUp() {
             dispatch={dispatch}
             error={state.errors.confirm_password}
         />
-            <span className={styles.Response}>    {state.response}                
-                <i className={styles.InvisibleResponse}>.</i> </span>
+            
         <SubmitButton
             label={"Register"}
             handleSubmit={handleSubmit}
         />
+        <span className={styles.Response}>    {state.response}                
+        <i className={styles.InvisibleResponse}>.</i> </span>
     </div>
   )
 }

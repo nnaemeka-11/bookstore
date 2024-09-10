@@ -15,12 +15,10 @@ const initialState = {
  };
 
  const InitialLogin = { 
-    username: '',
-    email: '',
+    user_id: '',
     password: '',
     errors:{
-        username: '',
-        email: '',
+        user_id: '',
         password: '',
     },
     response: ''
@@ -102,23 +100,13 @@ function RegisterReducer(state, action) {
 
 function LoginReducer(state, action) {
     switch (action.type) {
-      case 'username': {
+      case 'user_id': {
           return {
               ...state,
               [action.field]: action.value,
                errors: {
             ...state.errors,
             [action.field]: '',
-          },
-            };
-      }
-      case 'email': {
-          return {
-              ...state,
-              [action.field]: action.value,
-               errors: {
-            ...state.errors,
-            [action.field]: '', 
           },
             };
       }
@@ -132,6 +120,16 @@ function LoginReducer(state, action) {
           },
             };
       }
+      case 'SET_RESPONSE': {
+        return {
+            ...state,
+            [action.field]: action.response,
+             errors: {
+          ...state.errors,
+          [action.field]: '', 
+        },
+          };
+    }
       case 'SET_ERROR':
       return {
         ...state,
