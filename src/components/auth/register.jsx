@@ -1,4 +1,5 @@
 import React, { useReducer } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { initialState, RegisterReducer } from '../utils/reducer'
 import { validateEmail, validatePassword } from '../utils/utils'
 import {Input, SubmitButton} from '../utils/formElements'
@@ -7,6 +8,7 @@ import axios from 'axios'
 
 function signUp() {
     const [state, dispatch] = useReducer(RegisterReducer, initialState);
+    const navigate = useNavigate()
 
     const handleSubmit = async() => {        
         let isValid = true
@@ -40,11 +42,12 @@ function signUp() {
                 const { fullname, username, email, password} = state
                 const url = window.location.href.replace('register', '')
                 const data = { fullname, username, email, password, url} 
-              const response = await axios.post('https://bookstore-server-sxgd.onrender.com/user/register', data)            
-                dispatch({ type: 'SET_RESPONSE', field: 'response', response: response.data.message });
+              const response = await axios.post('https://bookstore-server-sxgd.onrender.com/user/register', data) 
+              dispatch({ type: 'SET_RESPONSE', field: 'response', response:{message: response.data.message, status:response.status }});    
+              navigate('/auth/verify')
             } catch (error) {
-                dispatch({ type: 'SET_RESPONSE', field: 'response', response: error.response.data.message});                  
-            }
+              dispatch({ type: 'SET_RESPONSE', field: 'response', response:{message: error.response.data.message, status:error.response.status }});                  
+          }
         };    
     }
   return (
@@ -104,8 +107,22 @@ function signUp() {
             label={"Register"}
             handleSubmit={handleSubmit}
         />
-        <span className={styles.Response}>    {state.response}                
-        <i className={styles.InvisibleResponse}>.</i> </span>
+        {
+            !state.response &&
+            <span className={styles.ResponseSuccess}><i className={styles.InvisibleResponse}>.</i> </span> 
+        }
+        {
+            state.response && state.response.response.status === 201 &&
+                <span className={styles.ResponseSuccess}>    
+                    {state.response.response.message}
+                </span>
+        }
+        {
+            state.response && state.response.response.status !== 201 &&
+                <span className={styles.ResponseWarning}>    
+                    {state.response.response.message} 
+                </span>               
+        }
     </div>
   )
 }

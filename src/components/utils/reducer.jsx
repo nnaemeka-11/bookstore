@@ -21,7 +21,7 @@ const initialState = {
         user_id: '',
         password: '',
     },
-    response: ''
+    response:''
  };
 
 function RegisterReducer(state, action) {
@@ -79,10 +79,9 @@ function RegisterReducer(state, action) {
     case 'SET_RESPONSE': {
       return {
           ...state,
-          [action.field]: action.response,
-           errors: {
-        ...state.errors,
-        [action.field]: '', 
+      response: {
+        ...state.response,
+        [action.field]: action.response, 
       },
         };
   }
@@ -123,10 +122,9 @@ function LoginReducer(state, action) {
       case 'SET_RESPONSE': {
         return {
             ...state,
-            [action.field]: action.response,
-             errors: {
-          ...state.errors,
-          [action.field]: '', 
+        response: {
+          ...state.response,
+          [action.field]: action.response, 
         },
           };
     }

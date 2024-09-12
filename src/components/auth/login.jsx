@@ -3,12 +3,13 @@ import axios from 'axios'
 import { InitialLogin, LoginReducer } from '../utils/reducer'
 import {Input, SubmitButton} from '../utils/formElements'
 import styles from '../../assets/css/auth/auth.module.css'
+import { Link, useNavigate } from 'react-router-dom'
 
 function login() {
     const [state, dispatch] = useReducer(LoginReducer, InitialLogin);
+    const navigate = useNavigate()
 
     const handleSubmit = async() => {
-        console.log(state);
         let isValid = true
         for (const key in state) {
             if (key !== 'errors' && key !== 'response' && state[key].trim() === '') {
@@ -17,12 +18,14 @@ function login() {
             }
         }
         if(isValid) {
-            try {
+            try {                
                 const data =  { user_id:state.user_id, password:state.password}
-                const response = await axios.post('https://bookstore-server-sxgd.onrender.com/user/login', data)            
-                dispatch({ type: 'SET_RESPONSE', field: 'response', response: response.data.message });
+                const response = await axios.post('https://bookstore-server-sxgd.onrender.com/user/login', data)                            
+                dispatch({ type: 'SET_RESPONSE', field: 'response', response:{message: response.data.message, status:response.status }});
+                navigate('/')
             } catch (error) {
-                dispatch({ type: 'SET_RESPONSE', field: 'response', response: error.response.data.message});                  
+                dispatch({ type: 'SET_RESPONSE', field: 'response', response:{message: error.response.data.message, status:error.response.status }});                  
+            
             }
         };
         
@@ -50,15 +53,38 @@ function login() {
             error={state.errors.password}
         />
         
+        <section className={styles.ForgotVerify}>
         <button className={styles.ForgotPasswordButton}>
                     Forgot Password?
         </button>
+        {
+            state.response && state.response.response.message === 'Verify your email' &&
+            
+            <Link to={'/auth/verify'} className={styles.VerifyLink}>Verify Email</Link>
+        }
+        </section>
+        
+
         <SubmitButton
             label={"Login"}
             handleSubmit={handleSubmit}
         />
-        <span className={styles.Response}>    {state.response}                
-        <i className={styles.InvisibleResponse}>.</i> </span>
+        {
+            !state.response &&
+            <span className={styles.ResponseSuccess}><i className={styles.InvisibleResponse}>.</i> </span> 
+        }
+        {
+            state.response && state.response.response.status === 200 &&
+                <span className={styles.ResponseSuccess}>    
+                    {state.response.response.message}                
+                </span>
+        }
+        {
+            state.response && state.response.response.status !== 200 &&
+                <span className={styles.ResponseWarning}>    
+                    {state.response.response.message} 
+                </span>               
+        }
     </div>
   )
 }
